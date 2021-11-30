@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { TodoItem } from "./TodoItem";
+import produce from "immer";
+
 const todoListInit = [
   { id: 1, title: "task 1" },
   { id: 2, title: "task 2" },
@@ -36,6 +38,12 @@ export function TodoList() {
     // let todoListNew = JSON.parse(JSON.stringify(todoList));
     // todoListNew.push(newTodo);
     // setTodoList(todoListNew);
+
+    // 5 immer
+    const todoListNew = produce(todoList, (todoListNew) => {
+      todoListNew.push(newTodo);
+    });
+    setTodoList(todoListNew);
   }
   return (
     <>
