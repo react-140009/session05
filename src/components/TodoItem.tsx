@@ -9,7 +9,7 @@ interface Props {
   todo: TodoModel;
   onRemoveTodo: any;
 }
-function TodoItem({ todo, onRemoveTodo }: Props) {
+export const TodoItem = memo(({ todo, onRemoveTodo }: Props) => {
   console.log("TodoItem ", todo.id);
   useEffect(() => {}, []);
   return (
@@ -21,6 +21,4 @@ function TodoItem({ todo, onRemoveTodo }: Props) {
       </td>
     </tr>
   );
-}
-
-export default memo(TodoItem);
+});

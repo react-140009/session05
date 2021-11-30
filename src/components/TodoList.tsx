@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import TodoItem from "./TodoItem";
+import { TodoItem } from "./TodoItem";
 import produce from "immer";
 
 const todoListInit = [
