@@ -3,6 +3,7 @@ import React, { useEffect, memo } from "react";
 interface TodoModel {
   id: number;
   title: string;
+  done: boolean;
 }
 
 interface Props {
@@ -14,6 +15,7 @@ export const TodoItem = memo(({ todo, onRemoveTodo }: Props) => {
   useEffect(() => {}, []);
   return (
     <tr>
+      <td>{todo.done ? "✅" : "⭕"}</td>
       <td>{todo.id}</td>
       <td>{todo.title}</td>
       <td>

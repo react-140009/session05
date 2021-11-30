@@ -3,10 +3,10 @@ import { TodoItem } from "./TodoItem";
 import produce from "immer";
 
 const todoListInit = [
-  { id: 1, title: "task 1" },
-  { id: 2, title: "task 2" },
-  { id: 3, title: "task 3" },
-  { id: 4, title: "task 4" },
+  { id: 1, title: "task 1", done: true },
+  { id: 2, title: "task 2", done: true },
+  { id: 3, title: "task 3", done: false },
+  { id: 4, title: "task 4", done: true },
 ];
 
 // const a = () => console.log('test');
@@ -37,7 +37,7 @@ export function TodoList() {
 
   function addTodo() {
     const max = todoList.reduce((a, b) => (a > b.id ? a : b.id), -Infinity);
-    const newTodo = { id: max + 1, title: newTodoTitle };
+    const newTodo = { id: max + 1, title: newTodoTitle, done: false };
 
     // 1
     // let todoListNew = [];
@@ -79,6 +79,7 @@ export function TodoList() {
       <table className="table table-striped">
         <thead>
           <tr>
+            <th>done</th>
             <th>id</th>
             <th>title</th>
             <th>action</th>
