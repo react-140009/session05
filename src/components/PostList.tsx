@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+//yarn add axios
 
 interface PostModel {
   userId: number;
