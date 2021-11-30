@@ -15,23 +15,27 @@ export function TodoList() {
   function addTodo() {
     const newTodo = { id: 5, title: "Test" };
 
-    let todoListNew = [];
-    for (let index = 0; index < todoList.length; index++) {
-      const element = todoList[index];
-      todoListNew.push(element);
-    }
+    // 1
+    // let todoListNew = [];
+    // for (let index = 0; index < todoList.length; index++) {
+    //   const element = todoList[index];
+    //   todoListNew.push(element);
+    // }
+    // todoListNew.push(newTodo);
+    // setTodoList(todoListNew)
 
-    todoListNew.push(newTodo);
+    // 2
+    // let todoListNew = todoList.slice();
+    // todoListNew.push(newTodo);
+    // setTodoList(todoListNew)
 
-    setTodoList(todoListNew);
+    // 3
+    // setTodoList([...todoList, newTodo]);
 
-    //1 true "starting"
-    let a = 1;
-    let arr1 = [1, 2, 3];
-    let arr2 = arr1;
-    arr1.push(4);
-
-    arr1 === arr2; //true, false?
+    // 4 copy deep
+    // let todoListNew = JSON.parse(JSON.stringify(todoList));
+    // todoListNew.push(newTodo);
+    // setTodoList(todoListNew);
   }
   return (
     <>
