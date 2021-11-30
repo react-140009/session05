@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { TodoItem } from "./TodoItem";
+import React, { useState, useEffect } from "react";
+import TodoItem from "./TodoItem";
 import produce from "immer";
 
 const todoListInit = [
@@ -15,6 +15,21 @@ export function TodoList() {
   const removeTodo = (id: number) => {
     setTodoList(todoList.filter((x) => x.id !== id));
   };
+
+  // useEffect(() => {
+  //   effect
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [input])
+
+  useEffect(() => {
+    console.log("TodoList");
+  }, []);
+
+  // []  -> faqat dafe aval run mishe
+  // [todoList]  -> dafe aval va harbar ke todoList change mishe run mishe
+
   function addTodo() {
     const max = todoList.reduce((a, b) => (a > b.id ? a : b.id), -Infinity);
     const newTodo = { id: max + 1, title: newTodoTitle };

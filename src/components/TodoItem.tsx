@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, memo } from "react";
 
 interface TodoModel {
   id: number;
@@ -9,7 +9,10 @@ interface Props {
   todo: TodoModel;
   onRemoveTodo: any;
 }
-export function TodoItem({ todo, onRemoveTodo }: Props) {
+function TodoItem({ todo, onRemoveTodo }: Props) {
+  useEffect(() => {
+    console.log("TodoItem ", todo.id);
+  }, []);
   return (
     <tr>
       <td>{todo.id}</td>
@@ -20,3 +23,5 @@ export function TodoItem({ todo, onRemoveTodo }: Props) {
     </tr>
   );
 }
+
+export default memo(TodoItem);
