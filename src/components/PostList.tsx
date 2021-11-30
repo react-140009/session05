@@ -1,5 +1,10 @@
-import React from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function PostList() {
-  return <div></div>;
+  //fetch
+  axios
+    .get("https://jsonplaceholder.typicode.com/posts")
+    .then((resp) => console.log(resp));
+  return <div>PostList</div>;
 }

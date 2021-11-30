@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import PostList from "./components/PostList";
 import { TodoList } from "./components/TodoList";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <button onClick={() => setToggle(!toggle)}>Toggle</button>
       {toggle && <h1>Test</h1>}
       <TodoList></TodoList>
+      <PostList></PostList>
     </div>
   );
 }
