@@ -11,11 +11,13 @@ const todoListInit = [
 
 export function TodoList() {
   const [todoList, setTodoList] = useState(todoListInit);
+  const [newTodoTitle, setNewTodoTitle] = useState("");
   const removeTodo = (id: number) => {
     setTodoList(todoList.filter((x) => x.id !== id));
   };
   function addTodo() {
-    const newTodo = { id: 5, title: "Test" };
+    const max = todoList.reduce((a, b) => (a > b.id ? a : b.id), -Infinity);
+    const newTodo = { id: max + 1, title: newTodoTitle };
 
     // 1
     // let todoListNew = [];
@@ -44,11 +46,17 @@ export function TodoList() {
       todoListNew.push(newTodo);
     });
     setTodoList(todoListNew);
+    setNewTodoTitle("");
   }
   return (
     <>
+      <input
+        value={newTodoTitle}
+        type="text"
+        onChange={(e) => setNewTodoTitle(e.target.value)}
+      />
       <button onClick={addTodo}>➕</button>
-      <table>
+      <table className="table table-striped">
         <thead>
           <tr>
             <th>id</th>
