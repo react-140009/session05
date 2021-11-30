@@ -9,7 +9,9 @@ const todoListInit = [
 
 export function TodoList() {
   const [todoList, setTodoList] = useState(todoListInit);
-  const removeTodo = (id: number) => {};
+  const removeTodo = (id: number) => {
+    setTodoList(todoList.filter((x) => x.id !== id));
+  };
   return (
     <table>
       <thead>
@@ -23,7 +25,7 @@ export function TodoList() {
         {todoList.map((item) => (
           <TodoItem
             key={item.id}
-            todo={1}
+            todo={item}
             onRemoveTodo={() => removeTodo(item.id)}
           ></TodoItem>
         ))}
