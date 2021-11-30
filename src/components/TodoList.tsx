@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import TodoItem from "./TodoItem";
 import produce from "immer";
 
@@ -9,12 +9,17 @@ const todoListInit = [
   { id: 4, title: "task 4" },
 ];
 
+// const a = () => console.log('test');
+// const b = () => console.log('test');
+
+// a === b // true ya false ??
+
 export function TodoList() {
   const [todoList, setTodoList] = useState(todoListInit);
   const [newTodoTitle, setNewTodoTitle] = useState("");
-  const removeTodo = (id: number) => {
+  const removeTodo = useCallback((id: number) => {
     setTodoList(todoList.filter((x) => x.id !== id));
-  };
+  }, []);
 
   // useEffect(() => {
   //   effect
@@ -84,7 +89,7 @@ export function TodoList() {
             <TodoItem
               key={item.id}
               todo={item}
-              onRemoveTodo={() => removeTodo(item.id)}
+              onRemoveTodo={removeTodo}
             ></TodoItem>
           ))}
         </tbody>

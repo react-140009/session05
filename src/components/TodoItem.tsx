@@ -10,15 +10,14 @@ interface Props {
   onRemoveTodo: any;
 }
 function TodoItem({ todo, onRemoveTodo }: Props) {
-  useEffect(() => {
-    console.log("TodoItem ", todo.id);
-  }, []);
+  console.log("TodoItem ", todo.id);
+  useEffect(() => {}, []);
   return (
     <tr>
       <td>{todo.id}</td>
       <td>{todo.title}</td>
       <td>
-        <button onClick={onRemoveTodo}>❌</button>
+        <button onClick={() => onRemoveTodo(todo.id)}>❌</button>
       </td>
     </tr>
   );
