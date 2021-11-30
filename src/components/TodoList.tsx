@@ -14,18 +14,24 @@ export function TodoList() {
   };
   function addTodo() {
     const newTodo = { id: 5, title: "Test" };
-    todoList.push(newTodo);
-    setTodoList(todoList);
+
+    let todoListNew = [];
+    for (let index = 0; index < todoList.length; index++) {
+      const element = todoList[index];
+      todoListNew.push(element);
+    }
+
+    todoListNew.push(newTodo);
+
+    setTodoList(todoListNew);
 
     //1 true "starting"
     let a = 1;
-    let arr1 = [1,2,3];
+    let arr1 = [1, 2, 3];
     let arr2 = arr1;
     arr1.push(4);
 
-    arr1 === arr2 //true, false?
-    
-
+    arr1 === arr2; //true, false?
   }
   return (
     <>
