@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { TodoItem } from "./TodoItem";
 const todoListInit = [
   { id: 1, title: "task 1" },
   { id: 2, title: "task 2" },
@@ -9,6 +9,7 @@ const todoListInit = [
 
 export function TodoList() {
   const [todoList, setTodoList] = useState(todoListInit);
+  const removeTodo = (id: number) => {};
   return (
     <table>
       <thead>
@@ -22,6 +23,7 @@ export function TodoList() {
         {todoList.map((item) => (
           <TodoItem
             key={item.id}
+            todo={1}
             onRemoveTodo={() => removeTodo(item.id)}
           ></TodoItem>
         ))}

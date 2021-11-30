@@ -5,10 +5,11 @@ interface TodoModel {
   title: string;
 }
 
-let obj = { a: 1, b: 2, c: 3 };
-function test({ a, b }: { a: number; b: number }) {}
-
-export default function TodoItem({ todo, onRemoveTodo }: { todo: TodoModel }) {
+interface Props {
+  todo: TodoModel;
+  onRemoveTodo: any;
+}
+export function TodoItem({ todo, onRemoveTodo }: Props) {
   return (
     <tr>
       <td>{todo.id}</td>
