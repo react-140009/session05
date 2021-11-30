@@ -12,24 +12,42 @@ export function TodoList() {
   const removeTodo = (id: number) => {
     setTodoList(todoList.filter((x) => x.id !== id));
   };
+  function addTodo() {
+    const newTodo = { id: 5, title: "Test" };
+    todoList.push(newTodo);
+    setTodoList(todoList);
+
+    //1 true "starting"
+    let a = 1;
+    let arr1 = [1,2,3];
+    let arr2 = arr1;
+    arr1.push(4);
+
+    arr1 === arr2 //true, false?
+    
+
+  }
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>id</th>
-          <th>title</th>
-          <th>action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {todoList.map((item) => (
-          <TodoItem
-            key={item.id}
-            todo={item}
-            onRemoveTodo={() => removeTodo(item.id)}
-          ></TodoItem>
-        ))}
-      </tbody>
-    </table>
+    <>
+      <button onClick={addTodo}>➕</button>
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {todoList.map((item) => (
+            <TodoItem
+              key={item.id}
+              todo={item}
+              onRemoveTodo={() => removeTodo(item.id)}
+            ></TodoItem>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }
