@@ -18,7 +18,7 @@ export const useFetchData = <T>(endpoint: string) => {
       setData(resp.data);
       setloading(false);
     })();
-  }, [page]);
+  }, [page, endpoint]);
 
   return {data, page, setPage, loading, total};
 }

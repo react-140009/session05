@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { useFetchData } from "../hooks/useFetchData";
 //yarn add axios
 
@@ -35,27 +33,23 @@ export default function PostList() {
       <nav aria-label="Page navigation example">
         <ul className="pagination">
           <li className="page-item">
-            <a className="page-link" href="#" onClick={prev}>
+            <button className="page-link" onClick={prev}>
               Previous
-            </a>
+            </button>
           </li>
 
           {new Array(total / 10).fill(0).map((_: any, idx: number) => (
-            <li className="page-item">
-              <a
-                className="page-link"
-                href="#"
-                onClick={() => setPage(idx + 1)}
-              >
+            <li key={idx} className="page-item">
+              <button className="page-link" onClick={() => setPage(idx + 1)}>
                 {idx + 1}
-              </a>
+              </button>
             </li>
           ))}
 
           <li className="page-item">
-            <a className="page-link" href="#" onClick={next}>
+            <button className="page-link" onClick={next}>
               Next
-            </a>
+            </button>
           </li>
         </ul>
       </nav>
