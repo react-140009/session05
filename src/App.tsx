@@ -8,11 +8,11 @@ function App() {
   const [toggle, setToggle] = useState(true);
   return (
     <div className="container">
+      <ColorSelector></ColorSelector>
       <button onClick={() => setToggle(!toggle)}>Toggle</button>
       {toggle && <TodoList></TodoList>}
 
       <PostList></PostList>
-      <ColorSelector></ColorSelector>
     </div>
   );
 }
