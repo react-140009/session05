@@ -49,7 +49,10 @@ export function TodoList() {
   // }, [input])
 
   useEffect(() => {
-    console.log("TodoList");
+    console.log("TodoList HAZER");
+    return () => {
+      console.log("TodoList QAYEB");
+    };
   }, []);
 
   // []  -> faqat dafe aval run mishe

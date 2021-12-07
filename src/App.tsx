@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import { ColorSelector } from "./components/ColorSelector";
 import PostList from "./components/PostList";
 import { TodoList } from "./components/TodoList";
 
@@ -8,9 +9,10 @@ function App() {
   return (
     <div className="container">
       <button onClick={() => setToggle(!toggle)}>Toggle</button>
-      {toggle && <h1>Test</h1>}
-      <TodoList></TodoList>
+      {toggle && <TodoList></TodoList>}
+
       <PostList></PostList>
+      <ColorSelector></ColorSelector>
     </div>
   );
 }
