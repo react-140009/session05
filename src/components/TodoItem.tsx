@@ -1,5 +1,5 @@
-import React, { useEffect, memo } from "react";
-
+import React, { useEffect, memo, useContext } from "react";
+import { ColorContext } from "../App";
 interface TodoModel {
   id: number;
   title: string;
@@ -12,13 +12,14 @@ interface Props {
   onToggleTodo: (id: number) => void;
 }
 export const TodoItem = memo(({ todo, onRemoveTodo, onToggleTodo }: Props) => {
-  console.log("TodoItem ", todo.id);
+  const [color] = useContext(ColorContext);
+  console.log("TodoItem ", todo.id, color);
   useEffect(() => {}, []);
   return (
     <tr>
       <td>{todo.done ? "✅" : "⭕"}</td>
       <td>{todo.id}</td>
-      <td>{todo.title}</td>
+      <td style={{ color }}>{todo.title}</td>
       <td>
         <button onClick={() => onRemoveTodo(todo.id)}>❌</button>
         <button onClick={() => onToggleTodo(todo.id)}>Toggle</button>
