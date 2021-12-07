@@ -6,6 +6,7 @@ import {
   PhotoList,
   PostList,
   TodoList,
+  PhotoDetail,
 } from "./components";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -26,7 +27,7 @@ function App() {
               element={
                 <>
                   <button onClick={() => setToggle(!toggle)}>Toggle</button>
-                  {toggle && <h2>Toggle header</h2>}
+                  {toggle && <h2>Toggle header!</h2>}
                 </>
               }
             ></Route>
@@ -34,6 +35,7 @@ function App() {
             <Route path="/todo" element={<TodoList />} />
             <Route path="/posts" element={<PostList />} />
             <Route path="/photos" element={<PhotoList />} />
+            <Route path="/photos/:id" element={<PhotoDetail />} />
           </Routes>
         </Router>
       </ColorContext.Provider>
