@@ -16,7 +16,7 @@ export interface PostModel {
 */
 export default function PostList() {
   const { page, setPage, data, total, loading } =
-    useFetchData<PostModel>("post");
+    useFetchData<PostModel>("posts");
 
   const prev = () => {
     if (page > 1) {
@@ -61,16 +61,24 @@ export default function PostList() {
       </nav>
       <table className="table table-striped">
         <thead>
-          <th>#</th>
-          <th>UserId</th>
-          <th>Title</th>
-          <th>Body</th>
+          <tr>
+            <th>#</th>
+            <th>UserId</th>
+            <th>Title</th>
+            <th>Body</th>
+          </tr>
         </thead>
         <tbody>
-          {loading && <h2>Loading...</h2>}
+          {loading && (
+            <tr>
+              <td colSpan={100}>
+                <h2>Loading...</h2>
+              </td>
+            </tr>
+          )}
           {data &&
             data.map((post) => (
-              <tr>
+              <tr key={"post-" + post.id}>
                 <td>{post.id}</td>
                 <td>{post.userId}</td>
                 <td>{post.title}</td>
