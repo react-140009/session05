@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useFetchData } from "../hooks/useFetchData";
 //yarn add axios
 
-interface PostModel {
+export interface PostModel {
   userId: number;
   id: number;
   title: string;
@@ -10,41 +11,7 @@ interface PostModel {
 }
 
 export default function PostList() {
-  const [data, setData] = useState<PostModel[]>(); // generic
-  const [page, setPage] = useState(1);
-  const [loading, setloading] = useState(false);
-  const [total, setTotal] = useState(0);
-  //fetch
-  useEffect(() => {
-    //async/await
-
-    // axios.get("https://jsonplaceholder.typicode.com/posts")
-    //   .then((resp) => console.log(resp));
-
-    // const main = async () => {
-    //   const resp = await axios.get(
-    //     "https://jsonplaceholder.typicode.com/posts"
-    //   );
-    //   console.log(resp);
-    // };
-    // main();
-
-    //Immediately Invoked Function Expression, IIFE
-
-    (async () => {
-      setloading(true);
-      setData(undefined);
-      const resp = await axios.get(
-        `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`
-      );
-      setTotal(+resp.headers["x-total-count"]);
-      setData(resp.data);
-      setloading(false);
-    })();
-    return () => {
-      console.log("page", page);
-    };
-  }, [page]);
+  const { page, setPage, data, total, loading } = useFetchData();
 
   const prev = () => {
     if (page > 1) {

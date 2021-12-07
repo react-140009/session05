@@ -10,3 +10,5 @@ use* hooks
 
   HATMAN bayad toye component ya custom React Hook haye react estefade konim
   Don’t call Hooks inside loops, conditions, or nested functions.
+
+  Custom Hook
