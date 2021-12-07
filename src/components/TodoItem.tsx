@@ -9,8 +9,9 @@ interface TodoModel {
 interface Props {
   todo: TodoModel;
   onRemoveTodo: any;
+  onToggleTodo: any;
 }
-export const TodoItem = memo(({ todo, onRemoveTodo }: Props) => {
+export const TodoItem = memo(({ todo, onRemoveTodo, onToggleTodo }: Props) => {
   console.log("TodoItem ", todo.id);
   useEffect(() => {}, []);
   return (
@@ -20,6 +21,7 @@ export const TodoItem = memo(({ todo, onRemoveTodo }: Props) => {
       <td>{todo.title}</td>
       <td>
         <button onClick={() => onRemoveTodo(todo.id)}>❌</button>
+        <button onClick={() => onToggleTodo(todo.id)}>Toggle</button>
       </td>
     </tr>
   );

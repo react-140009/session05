@@ -21,6 +21,18 @@ export function TodoList() {
     setTodoList(todoList.filter((x) => x.id !== id));
   }, []);
 
+  const toggleTodo = useCallback(
+    (id: number) => {
+      const todo = todoList.find((x) => x.id === id);
+      if (todo) {
+        todo.done = !todo.done;
+      }
+
+      setTodoList([...todoList]);
+    },
+    [todoList]
+  );
+
   // useEffect(() => {
   //   effect
   //   return () => {
@@ -37,6 +49,10 @@ export function TodoList() {
 
   function addTodo() {
     const max = todoList.reduce((a, b) => (a > b.id ? a : b.id), -Infinity);
+    // todoList.reduce((acc, cur)=> (acc > cur.id ? acc : cur.id), -Infinity)
+
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reduce((acc, curr) => acc + curr, 0);
+
     const newTodo = { id: max + 1, title: newTodoTitle, done: false };
 
     // 1
@@ -91,6 +107,7 @@ export function TodoList() {
               key={item.id}
               todo={item}
               onRemoveTodo={removeTodo}
+              onToggleTodo={toggleTodo}
             ></TodoItem>
           ))}
         </tbody>
