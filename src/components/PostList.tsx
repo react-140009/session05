@@ -9,6 +9,12 @@ interface PostModel {
   body: string;
 }
 
+/*
+  use* hooks  
+    useState
+    useEffect
+    useCallback
+*/
 export default function PostList() {
   const [data, setData] = useState<PostModel[]>(); // generic
   const [page, setPage] = useState(1);

@@ -17,9 +17,17 @@ const todoListInit = [
 export function TodoList() {
   const [todoList, setTodoList] = useState(todoListInit);
   const [newTodoTitle, setNewTodoTitle] = useState("");
-  const removeTodo = useCallback((id: number) => {
-    setTodoList(todoList.filter((x) => x.id !== id));
-  }, []);
+  const removeTodo = useCallback(
+    (id: number) => {
+      // setTodoList(todoList.filter((x) => x.id !== id));
+      const newList = produce(todoList, (newTodoList) => {
+        const idx = newTodoList.findIndex((x) => x.id === id);
+        delete newTodoList[idx];
+      });
+      setTodoList(newList);
+    },
+    [todoList]
+  );
 
   const toggleTodo = useCallback(
     (id: number) => {
