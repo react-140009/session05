@@ -8,8 +8,8 @@ interface TodoModel {
 
 interface Props {
   todo: TodoModel;
-  onRemoveTodo: any;
-  onToggleTodo: any;
+  onRemoveTodo: (id: number) => void;
+  onToggleTodo: (id: number) => void;
 }
 export const TodoItem = memo(({ todo, onRemoveTodo, onToggleTodo }: Props) => {
   console.log("TodoItem ", todo.id);
