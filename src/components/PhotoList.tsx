@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useFetchData } from "../hooks/useFetchData";
 
 export interface PhotoModel {
@@ -71,7 +72,9 @@ export function PhotoList() {
               <tr key={"post-" + post.id}>
                 <td>{post.id}</td>
                 <td>{post.albumId}</td>
-                <td>{post.title}</td>
+                <td>
+                  <Link to={`/photos/${post.id}`}>{post.title}</Link>
+                </td>
                 <td>
                   <img src={post.thumbnailUrl} />
                 </td>
