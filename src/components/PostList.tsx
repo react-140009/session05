@@ -10,8 +10,13 @@ export interface PostModel {
   body: string;
 }
 
+/*
+  Refactoring
+  بهینه کردن ساختار بدون تغییر در رفتار کد
+*/
 export default function PostList() {
-  const { page, setPage, data, total, loading } = useFetchData();
+  const { page, setPage, data, total, loading } =
+    useFetchData<PostModel>("post");
 
   const prev = () => {
     if (page > 1) {
