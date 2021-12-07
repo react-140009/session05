@@ -9,24 +9,6 @@ interface PostModel {
   body: string;
 }
 
-/*
-  use* hooks  
-    useState
-    useEffect
-      1. code -> 1st render run
-      2. code -> 1st va dependecyhash tagir mikone
-      3. component remove mishe 
-    useCallback
-    useRef
-
-    HATMAN bayad toye component ya custom React Hook haye react estefade konim
-
-*/
-
-function komaki() {
-  // const [state, setstate] = useState(1);
-}
-
 export default function PostList() {
   const [data, setData] = useState<PostModel[]>(); // generic
   const [page, setPage] = useState(1);
