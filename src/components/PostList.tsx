@@ -12,7 +12,7 @@ export interface PostModel {
   Refactoring
   بهینه کردن ساختار بدون تغییر در رفتار کد
 */
-export default function PostList() {
+export function PostList() {
   const { page, setPage, data, total, loading } =
     useFetchData<PostModel>("posts");
 

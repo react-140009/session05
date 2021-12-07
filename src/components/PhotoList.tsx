@@ -8,7 +8,7 @@ export interface PhotoModel {
   thumbnailUrl: string;
 }
 
-export default function PostList() {
+export function PhotoList() {
   const { page, setPage, data, total, loading } =
     useFetchData<PhotoModel>("photos");
 
