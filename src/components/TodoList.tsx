@@ -99,12 +99,13 @@ export default function TodoList() {
   return (
     <>
       <Header title="Todo List"></Header>
+      <button onClick={addTodo}>➕</button>
       <input
         value={newTodoTitle}
         type="text"
         onChange={(e) => setNewTodoTitle(e.target.value)}
       />
-      <button onClick={addTodo}>➕</button>
+      <div className="title">TODO LIST</div>
       <table className="table table-striped">
         <thead>
           <tr>
