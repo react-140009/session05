@@ -9,7 +9,7 @@ export interface PhotoModel {
   thumbnailUrl: string;
 }
 
-export function PhotoList() {
+export default function PhotoList() {
   const { page, setPage, data, total, loading } =
     useFetchData<PhotoModel>("photos");
 

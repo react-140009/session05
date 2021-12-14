@@ -1,16 +1,12 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, lazy, Suspense } from "react";
 import "./App.css";
-import {
-  Menu,
-  ColorSelector,
-  PhotoList,
-  PostList,
-  TodoList,
-  PhotoDetail,
-  NotFound,
-} from "./components";
-
+import { Menu, ColorSelector, PhotoDetail, NotFound } from "./components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+//Code Split
+const TodoList = lazy(() => import("./components/TodoList"));
+const PostList = lazy(() => import("./components/PostList"));
+const PhotoList = lazy(() => import("./components/PhotoList"));
 
 export const ColorContext = createContext([]);
 
@@ -33,9 +29,30 @@ function App() {
               }
             ></Route>
             <Route path="/color" element={<ColorSelector />} />
-            <Route path="/todo" element={<TodoList />} />
-            <Route path="/posts" element={<PostList />} />
-            <Route path="/photos" element={<PhotoList />} />
+            <Route
+              path="/todo"
+              element={
+                <Suspense fallback={<>Loding...</>}>
+                  <TodoList />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/posts"
+              element={
+                <Suspense fallback={<>Loding...</>}>
+                  <PostList />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/photos"
+              element={
+                <Suspense fallback={<>Loding...</>}>
+                  <PhotoList />
+                </Suspense>
+              }
+            />
             <Route path="/photos/:id" element={<PhotoDetail />} />
             <Route path="/404" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />
