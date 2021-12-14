@@ -7,6 +7,7 @@ import {
   PostList,
   TodoList,
   PhotoDetail,
+  NotFound,
 } from "./components";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -36,6 +37,7 @@ function App() {
             <Route path="/posts" element={<PostList />} />
             <Route path="/photos" element={<PhotoList />} />
             <Route path="/photos/:id" element={<PhotoDetail />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
       </ColorContext.Provider>

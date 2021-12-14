@@ -46,6 +46,11 @@ export function Menu() {
                 Photos
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about-us">
+                About us
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
