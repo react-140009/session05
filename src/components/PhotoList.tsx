@@ -35,10 +35,13 @@ export function PhotoList() {
             </button>
           </li>
 
-          {new Array(total / 10).fill(0).map((_: any, idx: number) => (
+          {new Array(5).fill(0).map((_: any, idx: number) => (
             <li key={idx} className="page-item">
-              <button className="page-link" onClick={() => setPage(idx + 1)}>
-                {idx + 1}
+              <button
+                className="page-link"
+                onClick={() => setPage(page - 2 + 1 + idx)}
+              >
+                {page - 2 + 1 + idx}
               </button>
             </li>
           ))}
