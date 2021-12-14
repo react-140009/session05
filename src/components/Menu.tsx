@@ -1,10 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { increment } from "../features/counter/counterSlice";
 
 export function Menu() {
+  const dispatch = useDispatch();
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
+        <button
+          className="btn btn-primary"
+          onClick={() => dispatch(increment())}
+        >
+          ➕
+        </button>
         <Link className="navbar-brand" to="/">
           Navbar
         </Link>
