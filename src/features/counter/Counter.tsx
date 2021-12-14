@@ -1,6 +1,6 @@
 import { RootState } from "../../app/store";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "./counterSlice";
+import { decrement, increment, incrementByAmount } from "./counterSlice";
 
 export default function () {
   const count = useSelector((state: RootState) => state.counter.value);
@@ -9,6 +9,12 @@ export default function () {
   return (
     <>
       <br />
+      <button
+        className="btn btn-success"
+        onClick={() => dispatch(incrementByAmount(10))}
+      >
+        ➕10
+      </button>
       <button className="btn btn-success" onClick={() => dispatch(increment())}>
         ➕
       </button>
