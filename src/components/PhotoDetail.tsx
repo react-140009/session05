@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const PhotoDetail = () => {
   const [data, setData] = useState<any>();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/photos/" + id)
       .then((resp) => setData(resp.data));
   });
+
+  const goBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div>
@@ -26,7 +31,7 @@ export const PhotoDetail = () => {
           </div>
         </div>
       )}
-      <button>Go Back</button>
+      <button onClick={goBack}>Go Back</button>
     </div>
   );
 };
