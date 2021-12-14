@@ -27,6 +27,11 @@ export function Menu() {
               </Link>
             </li>
             <li className="nav-item">
+              <Link className="nav-link" to="/counter">
+                Counter
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/color">
                 Color
               </Link>
