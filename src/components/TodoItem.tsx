@@ -1,6 +1,6 @@
 import React, { useEffect, memo, useContext } from "react";
 import { ColorContext } from "../App";
-import "./TodoItem.css";
+import styles from "./TodoItem.module.css";
 
 interface TodoModel {
   id: number;
@@ -21,7 +21,7 @@ export const TodoItem = memo(({ todo, onRemoveTodo, onToggleTodo }: Props) => {
     <tr>
       <td>{todo.done ? "✅" : "⭕"}</td>
       <td>
-        <div className="title">{todo.id}</div>
+        <div className={styles.title}>{todo.id}</div>
       </td>
       <td style={{ color }}>{todo.title}</td>
       <td>
