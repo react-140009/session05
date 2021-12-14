@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { TodoItem } from "./TodoItem";
 import produce from "immer";
+import { Header } from ".";
 
 const todoListInit = [
   { id: 1, title: "task 1", done: true },
@@ -97,6 +98,7 @@ export function TodoList() {
   }
   return (
     <>
+      <Header title="Todo List"></Header>
       <input
         value={newTodoTitle}
         type="text"

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Helmet } from "react-helmet";
+import { Header } from "./Header";
 export const PhotoDetail = () => {
   const [data, setData] = useState<any>();
   const { id } = useParams();
@@ -21,9 +21,8 @@ export const PhotoDetail = () => {
     <div>
       {data && (
         <div className="card" style={{ width: "18rem" }}>
-          <Helmet>
-            <title>Details of {data.title} </title>
-          </Helmet>
+          <Header title={"Details of " + data.title}></Header>
+
           <img className="card-img-top" src={data.url} alt="Card image cap" />
           <div className="card-body">
             <h5 className="card-title">{data.title}</h5>
