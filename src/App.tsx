@@ -37,6 +37,7 @@ function App() {
             <Route path="/posts" element={<PostList />} />
             <Route path="/photos" element={<PhotoList />} />
             <Route path="/photos/:id" element={<PhotoDetail />} />
+            <Route path="/404" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
