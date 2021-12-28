@@ -69,6 +69,11 @@ export function Menu() {
                 About us
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/auth/login">
+                Login
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

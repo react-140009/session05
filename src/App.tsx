@@ -1,9 +1,11 @@
 import React, { useState, createContext, lazy, Suspense } from "react";
 import "./App.css";
+import "antd/dist/antd.css";
 import { Menu, ColorSelector, PhotoDetail, NotFound } from "./components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
+import { Login } from "./features/auth/Login";
 
 //Code Split
 const TodoList = lazy(() => import("./components/TodoList"));
@@ -66,6 +68,7 @@ function App() {
                 }
               />
               <Route path="/photos/:id" element={<PhotoDetail />} />
+              <Route path="/auth/login" element={<Login />} />
               <Route path="/404" element={<NotFound />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

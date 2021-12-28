@@ -1,4 +1,3 @@
-import { RootState } from "../../app/store";
 import { useSelector, useDispatch } from "react-redux";
 import {
   decrement,
