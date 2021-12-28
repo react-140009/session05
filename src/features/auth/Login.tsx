@@ -26,7 +26,6 @@ export const Login = () => {
           <Space direction="vertical">
             <input
               placeholder="email"
-              type={"email"}
               {...register("email", { required: true })}
             />
             <input
