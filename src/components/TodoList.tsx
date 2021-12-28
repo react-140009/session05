@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { TodoItem } from "./TodoItem";
-import produce from "immer";
 import { Header } from ".";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../features/todo/todoSlice";
