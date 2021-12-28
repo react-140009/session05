@@ -21,6 +21,11 @@ export default function TodoList() {
     <>
       <Header title="Todo List"></Header>
       <button onClick={() => dispatch(add(newTodoTitle))}>➕</button>
+      <button
+        onClick={() => dispatch({ type: "todo/add", payload: newTodoTitle })}
+      >
+        ➕➕
+      </button>
       <input
         value={newTodoTitle}
         type="text"

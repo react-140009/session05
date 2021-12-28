@@ -1,5 +1,10 @@
-import { useFetchData } from "../hooks/useFetchData";
+// import { useFetchData } from "../hooks/useFetchData";
 //yarn add axios
+
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../app/store";
+import { fetchPageAsync } from "../features/post/postSlice";
 
 export interface PostModel {
   userId: number;
@@ -13,18 +18,27 @@ export interface PostModel {
   بهینه کردن ساختار بدون تغییر در رفتار کد
 */
 export default function PostList() {
-  const { page, setPage, data, total, loading } =
-    useFetchData<PostModel>("posts");
+  const dispatch = useDispatch();
+  const { loading, page, postList, total } = useSelector(
+    (state: RootState) => state.post
+  );
+
+  // const { page, setPage, data, total, loading } =
+  //   useFetchData<PostModel>("posts");
+
+  useEffect(() => {
+    dispatch(fetchPageAsync(1));
+  }, []);
 
   const prev = () => {
     if (page > 1) {
-      setPage(page - 1);
+      dispatch(fetchPageAsync(page - 1));
     }
   };
 
   const next = () => {
     if (page < total / 10) {
-      setPage(page + 1);
+      dispatch(fetchPageAsync(page + 1));
     }
   };
 
@@ -40,7 +54,10 @@ export default function PostList() {
 
           {new Array(total / 10).fill(0).map((_: any, idx: number) => (
             <li key={idx} className="page-item">
-              <button className="page-link" onClick={() => setPage(idx + 1)}>
+              <button
+                className="page-link"
+                onClick={() => dispatch(fetchPageAsync(idx + 1))}
+              >
                 {idx + 1}
               </button>
             </li>
@@ -70,8 +87,8 @@ export default function PostList() {
               </td>
             </tr>
           )}
-          {data &&
-            data.map((post) => (
+          {postList &&
+            postList.map((post) => (
               <tr key={"post-" + post.id}>
                 <td>{post.id}</td>
                 <td>{post.userId}</td>
