@@ -1,6 +1,16 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import axios, { AxiosResponse } from 'axios';
 
+function Test(){
+
+}
+Test.xyz = 123;
+Test.abc = function(){}
+
+Test();
+Test.abc()
+
+
 export interface PostItem {
   userId: number;
   id: number;

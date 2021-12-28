@@ -1,14 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { increment } from "../features/counter/counterSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { increment, selectCounter } from "../features/counter/counterSlice";
+import { RootState } from "../app/store";
 
 export function Menu() {
   const dispatch = useDispatch();
+  const counter = useSelector(selectCounter);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
+        {counter}
         <button
           className="btn btn-primary"
           onClick={() => dispatch(increment())}
