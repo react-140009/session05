@@ -3,6 +3,9 @@ import { ColorContext } from "../App";
 import styles from "./TodoItem.module.css";
 import styled from "styled-components";
 
+import { useDispatch } from "react-redux";
+import { toggle, remove } from "../features/todo/todoSlice";
+
 const Title = styled.div`
   font-size: 1.5em;
   text-align: center;
@@ -20,10 +23,9 @@ interface TodoModel {
 
 interface Props {
   todo: TodoModel;
-  onRemoveTodo: (id: number) => void;
-  onToggleTodo: (id: number) => void;
 }
-export const TodoItem = memo(({ todo, onRemoveTodo, onToggleTodo }: Props) => {
+export const TodoItem = memo(({ todo }: Props) => {
+  const dispatch = useDispatch();
   const [color] = useContext(ColorContext);
   console.log("TodoItem ", todo.id, color);
   useEffect(() => {}, []);
@@ -38,8 +40,8 @@ export const TodoItem = memo(({ todo, onRemoveTodo, onToggleTodo }: Props) => {
         <Title>{todo.title}</Title>
       </td>
       <td>
-        <button onClick={() => onRemoveTodo(todo.id)}>❌</button>
-        <button onClick={() => onToggleTodo(todo.id)}>Toggle</button>
+        <button onClick={() => dispatch(remove(todo.id))}>❌</button>
+        <button onClick={() => dispatch(toggle(todo.id))}>Toggle</button>
       </td>
     </tr>
   );
